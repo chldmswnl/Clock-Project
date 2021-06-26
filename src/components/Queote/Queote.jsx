@@ -8,8 +8,7 @@ const QueoteContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
-  width: 40%;
+  margin-bottom: 30px;
 `;
 
 const QueoteDiv = styled.div`
@@ -23,6 +22,9 @@ const QueoteSpan = styled.span`
   color: white;
   margin-bottom: 10px;
   font-size: 1.2rem;
+  @media all and (max-width: 479px) {
+    font-size: 1rem;
+  }
 `;
 
 const QueoteBtn = styled.button`
@@ -31,6 +33,9 @@ const QueoteBtn = styled.button`
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  @media all and (max-width: 479px) {
+    margin-right: 10px;
+  }
 `;
 
 const Queote = () => {

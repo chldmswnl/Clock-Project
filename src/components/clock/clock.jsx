@@ -19,32 +19,60 @@ const Container = styled.div`
     props.day ? "/img/day.jpg" : "/img/night.jpg"});
   background-size: cover;
 `;
+
+const WrappedTime = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const TimeDiv = styled.div`
-  margin-top: 10%;
+  margin-top: 7%;
   margin-left: 5%;
+  display: flex;
+  align-items: center;
+  @media (min-width: 480px) and (max-width: 767px) {
+    flex-direction: column;
+    margin-left: 0%;
+  }
+  @media all and (max-width: 479px) {
+    flex-direction: column;
+  }
 `;
 const Welcome = styled.span`
   color: white;
   font-weight: bold;
   font-size: 1.5rem;
+  @media all and (max-width: 479px) {
+    font-size: 1rem;
+  }
 `;
 
 const Location = styled.span`
   color: white;
   font-weight: bold;
   font-size: 1.5rem;
+  @media all and (max-width: 479px) {
+    font-size: 1rem;
+  }
 `;
 
 const ToggleButton = styled.button`
   border-radius: 20px;
   width: 100px;
-  height: 20x;
-  padding: 10px;
+  height: 40px;
   border: none;
   background-color: white;
   font-weight: bold;
   color: #545452;
   cursor: pointer;
+  margin-top: 250px;
+  @media (min-width: 480px) and (max-width: 767px) {
+    margin-top: 50px;
+  }
+  @media all and (max-width: 479px) {
+    margin-top: 30px;
+    width: 60px;
+    height: 30px;
+  }
 
   &:hover {
     opacity: 0.8;
@@ -95,15 +123,15 @@ const Clock = () => {
     <>
       <Container day={day}>
         <TimeDiv>
-          <Queote />
-          <Welcome>{welcomeString} It's currently</Welcome>
-          <div>
+          <WrappedTime>
+            <Queote />
+            <Welcome>{welcomeString} It's currently</Welcome>
             <TimeSection />
-            <ToggleButton onClick={onClick}>{btnName}</ToggleButton>
-          </div>
-          <Location>
-            In {regionName}, {city}
-          </Location>
+            <Location>
+              In {regionName}, {city}
+            </Location>
+          </WrappedTime>
+          <ToggleButton onClick={onClick}>{btnName}</ToggleButton>
         </TimeDiv>
         {openInfoSection && <InfoSection />}
       </Container>

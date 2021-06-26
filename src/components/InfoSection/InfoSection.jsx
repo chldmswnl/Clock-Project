@@ -14,6 +14,10 @@ const InfoDiv = styled.div`
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
+  @media all and (max-width: 479px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Section = styled.div`
@@ -21,25 +25,49 @@ const Section = styled.div`
   flex-direction: column;
   padding: 0.7rem;
   margin-left: 10%;
+  @media (min-width: 480px) and (max-width: 767px) {
+    padding: 1.5rem;
+  }
+  @media all and (max-width: 479px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 0%;
+  }
 `;
 
 const Side = styled.div`
   display: flex;
   flex-direction: column;
-
   width: 50%;
+  @media all and (max-width: 479px) {
+    width: 70%;
+    margin-right: 50px;
+  }
 `;
 
 const Title = styled.span`
   font-weight: bold;
   font-size: 1.7rem;
   color: white;
+  @media (min-width: 480px) and (max-width: 767px) {
+    font-size: 1.2rem;
+  }
+  @media all and (max-width: 479px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Data = styled.span`
   font-weight: bold;
   font-size: 1.5rem;
   color: white;
+  @media (min-width: 480px) and (max-width: 767px) {
+    font-size: 0.8rem;
+  }
+  @media all and (max-width: 479px) {
+    font-size: 0.8rem;
+  }
 `;
 const InfoSection = () => {
   dayjs.extend(timezone);
