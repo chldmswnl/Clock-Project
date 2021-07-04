@@ -23,11 +23,7 @@ const TimeSection = () => {
     setTime(dayjs().format("HH:mm:ss"));
   }, 1000);
 
-  return (
-    <>
-      <Time>{time}</Time>
-    </>
-  );
+  return <Time>{time}</Time>;
 };
 
 export default TimeSection;

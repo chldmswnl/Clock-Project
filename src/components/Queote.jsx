@@ -23,7 +23,7 @@ const QueoteSpan = styled.span`
   margin-bottom: 10px;
   font-size: 1.2rem;
   @media all and (max-width: 479px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -39,28 +39,25 @@ const QueoteBtn = styled.button`
 `;
 
 const Queote = () => {
-  const [data, setData] = useState([]);
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
 
   const getQueote = async () => {
-    const data = await axios.get(`https://api.quotable.io/random`, {
+    const {
+      data: { content, author },
+    } = await axios.get(`https://api.quotable.io/random`, {
       params: { maxLength: 50 },
     });
-
-    setData(data.data);
+    setAuthor(author);
+    setContent(content);
+    return { content, author };
   };
 
   useEffect(() => {
     getQueote();
   }, []);
 
-  useEffect(() => {
-    setContent(data.content);
-    setAuthor(data.author);
-  }, [data]);
-
-  const onClick = () => {
+  const handleClick = () => {
     getQueote();
   };
 
@@ -70,7 +67,7 @@ const Queote = () => {
         <QueoteSpan>{content}</QueoteSpan>
         <QueoteSpan>-{author}</QueoteSpan>
       </QueoteDiv>
-      <QueoteBtn onClick={onClick}>
+      <QueoteBtn onClick={handleClick}>
         <FontAwesomeIcon icon={faSyncAlt} />
       </QueoteBtn>
     </QueoteContainer>

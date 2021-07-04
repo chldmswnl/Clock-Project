@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import TimeSection from "../TimeSection/TimeSection";
-import Queote from "../Queote/Queote";
+import TimeSection from "./TimeSection";
+import Queote from "./Queote";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import InfoSection from "../InfoSection/InfoSection";
+import InfoSection from "./InfoSection";
 import axios from "axios";
-let utc = require("dayjs/plugin/utc");
-let timezone = require("dayjs/plugin/timezone");
 
 const Container = styled.div`
   position: absolute;
@@ -80,19 +78,18 @@ const ToggleButton = styled.button`
 `;
 
 const Clock = () => {
-  dayjs.extend(timezone);
-  dayjs.extend(utc);
+  let hour = parseInt(dayjs().format("HH"));
   const [regionName, setRegionName] = useState("");
   const [city, setCity] = useState("");
   const [locationData, setLocationData] = useState([]);
-  const [hour, setHour] = useState(parseInt(dayjs().format("HH")));
   const [day, setDay] = useState(true);
   const [btnName, setBtnName] = useState("More");
   const [welcomeString, setWelcomeString] = useState("");
   const [openInfoSection, SetOpenInfoSection] = useState(false);
+
   const getMyPosition = async () => {
-    const data = await axios.get(`http://ip-api.com/json`);
-    setLocationData(data.data);
+    const { data } = await axios.get(`http://ip-api.com/json`);
+    setLocationData(data);
   };
 
   useEffect(() => {
