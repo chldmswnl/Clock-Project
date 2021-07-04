@@ -50,7 +50,6 @@ const Queote = () => {
     });
     setAuthor(author);
     setContent(content);
-    return { content, author };
   };
 
   useEffect(() => {
